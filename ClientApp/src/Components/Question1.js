@@ -30,7 +30,7 @@ class Question1 extends Component {
         <div>Question 1</div>
         <TextField
           className={classes.textField}
-          placeholder="Placeholder"
+          placeholder="Country Name"
           margin="dense"
           variant="outlined"
           onChange={this.onChange}
