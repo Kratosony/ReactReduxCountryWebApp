@@ -3,6 +3,7 @@ import { withStyles, TextField, Button } from "@material-ui/core";
 import { compose } from "recompose";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { getCountryDetails } from "../Store/Actions/CountryActions";
 import { styles } from "./Question1.styles";
 
 class Question1 extends Component {
@@ -19,12 +20,8 @@ class Question1 extends Component {
     });
   };
 
-  onHandleClick = () => {
-    const { dispatch, periodId } = this.props;
-  };
-
   render() {
-    const { classes } = this.props;
+    const { classes, dispatch, country } = this.props;
     return (
       <div>
         <div>Question 1</div>
@@ -39,17 +36,30 @@ class Question1 extends Component {
           variant="contained"
           color="primary"
           component="span"
-          onClick={() => this.onHandleClick()}
+          onClick={() => {
+            dispatch(getCountryDetails(this.state.searchFieldText));
+          }}
         >
           Submit
         </Button>
+        {country}
       </div>
     );
   }
 }
 
-Question1.propTypes = {
-  classes: PropTypes.object.isRequired,
+const mapStateToProps = (state) => {
+  return {
+    data: state.country,
+  };
 };
 
-export default compose(withStyles(styles))(Question1);
+Question1.propTypes = {
+  classes: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    country: PropTypes.string.isRequired,
+  }),
+};
+
+export default compose(withStyles(styles), connect(mapStateToProps))(Question1);
