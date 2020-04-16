@@ -1,9 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { withStyles, TextField, Button } from "@material-ui/core";
 import { compose } from "recompose";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCountryDetails } from "../Store/Actions/CountryActions";
+import Section from "./Shared/Section";
+import { titles } from "../Constants/TitlesDescriptions";
+import { commonStrings } from "../Constants/CommonStrings";
 import { styles } from "./Question1.styles";
 
 class Question1 extends Component {
@@ -21,29 +24,34 @@ class Question1 extends Component {
   };
 
   render() {
-    const { classes, dispatch, country } = this.props;
+    const { classes, dispatch } = this.props;
     return (
-      <div>
-        <div>Question 1</div>
-        <TextField
-          className={classes.textField}
-          placeholder="Country Name"
-          margin="dense"
-          variant="outlined"
-          onChange={this.onChange}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          component="span"
-          onClick={() => {
-            dispatch(getCountryDetails(this.state.searchFieldText));
-          }}
+      <Fragment>
+        <Section
+          title={titles.question("1")}
+          description={titles.descriptionQ1}
         >
-          Submit
-        </Button>
-        {country}
-      </div>
+          <div className={classes.content}>
+            <TextField
+              className={classes.textField}
+              placeholder={commonStrings.country}
+              margin="dense"
+              variant="outlined"
+              onChange={this.onChange}
+            />
+            <Button
+              className={classes.button}
+              variant="contained"
+              component="span"
+              onClick={() => {
+                dispatch(getCountryDetails(this.state.searchFieldText));
+              }}
+            >
+              {commonStrings.submit}
+            </Button>
+          </div>
+        </Section>
+      </Fragment>
     );
   }
 }

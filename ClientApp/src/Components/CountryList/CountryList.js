@@ -5,7 +5,7 @@ class CountryList extends Component {
   render() {
     return (
       <div>
-        <div> Countrie </div>
+        <div> Countries </div>
         <ul>
           <li>
             <CountryListItem id="1" name="Vietnam" />
