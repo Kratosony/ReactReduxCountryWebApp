@@ -19,7 +19,8 @@ class ModalButton extends React.PureComponent {
           disableRipple
           className={`${classes.acceptButton} ${classes.button} ${buttonClassName}`}
           onClick={onAccept}
-          color="primary"
+          variant="contained"
+          component="span"
           type="submit"
         >
           {acceptText}

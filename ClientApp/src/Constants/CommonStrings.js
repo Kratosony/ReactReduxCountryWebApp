@@ -11,4 +11,5 @@ export const commonStrings = {
   logOut: "Log Out",
   submit: "Submit",
   country: "Country",
+  results: "Results",
 };

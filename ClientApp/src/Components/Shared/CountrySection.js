@@ -6,13 +6,10 @@ import { styles } from "./Section.styles";
 
 class CountrySection extends Component {
   render() {
-    const { classes, title, description, children } = this.props;
+    const { classes, title, children } = this.props;
     return (
       <Paper className={classes.root}>
         <div className={classes.title}>{title}</div>
-        <div className={classes.description}>
-          <p>{description}</p>
-        </div>
         {children}
       </Paper>
     );
@@ -26,7 +23,6 @@ CountrySection.defaultProps = {
 CountrySection.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

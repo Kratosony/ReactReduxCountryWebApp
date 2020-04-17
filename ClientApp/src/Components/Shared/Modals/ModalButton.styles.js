@@ -10,6 +10,8 @@ const styles = {
     margin: 0,
     borderRadius: 0,
     height: 60,
+    backgroundColor: "#320B38",
+    color: "#fff",
     "&[disabled]": {
       opacity: 0.6,
     },

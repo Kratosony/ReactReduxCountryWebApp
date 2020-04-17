@@ -3,12 +3,10 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core";
 import { compose } from "recompose";
 import { commonStrings } from "../../../Constants/CommonStrings";
-import CountrySection from "../CountrySection";
-import CountryTable from "../CountryTable";
 import Button from "./ModalButton";
 import Modal from "./Modal";
 import styles from "./CountryModal.styles";
-class CountryModal extends React.PureComponent {
+class ErrorModal extends React.PureComponent {
   render() {
     const {
       open,
@@ -16,7 +14,6 @@ class CountryModal extends React.PureComponent {
       message,
       children,
       onConfirm,
-      countryData,
       acceptText,
       classes,
     } = this.props;
@@ -25,9 +22,6 @@ class CountryModal extends React.PureComponent {
         <div className={classes.content}>
           {title && <div className={classes.title}>{title}</div>}
           <div className={classes.message}>{children || message}</div>
-          <CountrySection title={commonStrings.results}>
-            <CountryTable countryData={countryData} />
-          </CountrySection>
         </div>
         <Button onAccept={onConfirm} acceptText={acceptText}>
           {commonStrings.ok}
@@ -37,7 +31,7 @@ class CountryModal extends React.PureComponent {
   }
 }
 
-CountryModal.defaultProps = {
+ErrorModal.defaultProps = {
   message: "",
   title: "",
   children: null,
@@ -45,7 +39,7 @@ CountryModal.defaultProps = {
   acceptText: commonStrings.ok,
 };
 
-CountryModal.propTypes = {
+ErrorModal.propTypes = {
   open: PropTypes.bool.isRequired,
   message: PropTypes.string,
   children: PropTypes.element,
@@ -53,11 +47,6 @@ CountryModal.propTypes = {
   onConfirm: PropTypes.func,
   acceptText: PropTypes.string,
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
-  countryData: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-    })
-  ).isRequired,
 };
 
-export default compose(withStyles(styles))(CountryModal);
+export default compose(withStyles(styles))(ErrorModal);

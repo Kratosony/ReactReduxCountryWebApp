@@ -2,6 +2,7 @@ import { takeLatest, put } from "redux-saga/effects";
 import {
   GET_COUNTRY_DETAILS,
   getCountryDetailsSuccess,
+  openErrorModal,
 } from "../Actions/CountryActions";
 import { GET_COUNTRY_DETAILS_URL } from "../Api/ApiEndpoints";
 
@@ -13,6 +14,8 @@ function* getCountryDetails(action) {
   if (response.ok) {
     const data = yield response.json();
     yield put(getCountryDetailsSuccess(data));
+  } else {
+    yield put(openErrorModal());
   }
 }
 

@@ -24,7 +24,7 @@ Modal.defaultProps = {
   children: "",
   className: "",
   isSubmitting: false,
-  width: "sm",
+  width: "xl",
 };
 
 Modal.propTypes = {
