@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCountryDetails } from "../Store/Actions/CountryActions";
 import Section from "./Shared/Section";
+import CountryModal from "./Shared/Modals/CountryModal";
 import { titles } from "../Constants/TitlesDescriptions";
 import { commonStrings } from "../Constants/CommonStrings";
 import { styles } from "./Question1.styles";
@@ -24,9 +25,15 @@ class Question1 extends Component {
   };
 
   render() {
-    const { classes, dispatch } = this.props;
+    const { classes, dispatch, country } = this.props;
     return (
       <Fragment>
+        <CountryModal
+          open={country.countryModal}
+          title={"Result"}
+          onConfirm={this.onDuplicateUploadConfirm}
+          countryData={country.countryData}
+        />
         <Section
           title={titles.question("1")}
           description={titles.descriptionQ1}
@@ -58,16 +65,23 @@ class Question1 extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.country,
+    country: state.country,
   };
 };
 
 Question1.propTypes = {
   classes: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  data: PropTypes.shape({
-    country: PropTypes.string.isRequired,
-  }),
+  country: PropTypes.shape({
+    countryModal: PropTypes.bool,
+    countryData: PropTypes.arrayOf(
+      PropTypes.shape({
+        country: PropTypes.shape({
+          name: PropTypes.string,
+        }),
+      })
+    ),
+  }).isRequired,
 };
 
 export default compose(withStyles(styles), connect(mapStateToProps))(Question1);

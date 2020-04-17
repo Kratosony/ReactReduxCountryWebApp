@@ -1,19 +1,17 @@
 export const GET_COUNTRY_DETAILS = "GET_COUNTRY_DETAILS";
 export const GET_COUNTRY_DETAILS_SUCCESS = "GET_COUNTRY_DETAILS_SUCCESS";
 
-export function getCountryDetails(country) {
-  console.log("Action", country);
+export function getCountryDetails(userCountryInput) {
   return {
     type: GET_COUNTRY_DETAILS,
-    country,
+    userCountryInput,
   };
 }
 
 export function getCountryDetailsSuccess(data) {
   return {
     type: GET_COUNTRY_DETAILS_SUCCESS,
-    payload: {
-      data: data,
-    },
+    countryData: data,
+    countryModal: true,
   };
 }

@@ -4,19 +4,17 @@ import {
 } from "../Actions/CountryActions";
 
 const initialState = {
-  country: "",
-  data: {},
+  countryModal: false,
+  countryData: [],
 };
 
 export default function countryReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_COUNTRY_DETAILS:
-      return Object.assign({}, state, {
-        country: action.country,
-      });
     case GET_COUNTRY_DETAILS_SUCCESS:
+      console.log(action);
       return Object.assign({}, state, {
-        data: action.payload.data,
+        countryData: action.countryData,
+        countryModal: action.countryModal,
       });
     default:
       return state;

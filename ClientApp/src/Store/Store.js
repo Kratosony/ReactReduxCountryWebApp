@@ -1,16 +1,15 @@
 import { applyMiddleware, createStore, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { connectRouter } from "connected-react-router";
 import rootReducer from "./RootReducer";
 import * as sagas from "./Index";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  connectRouter(rootReducer),
+  rootReducer,
   compose(
     applyMiddleware(sagaMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : (f) => f
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 
