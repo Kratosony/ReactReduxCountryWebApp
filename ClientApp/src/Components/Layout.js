@@ -1,27 +1,37 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Drawer, withTheme, withStyles } from "@material-ui/core";
+import { compose } from "recompose";
+import PropTypes from "prop-types";
+import Link from "./Shared/Link";
+import styles from "./Layout.styles";
 
 class Layout extends Component {
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <div>
-          <h1>YoBetit Preliminary Test</h1>
-        </div>
-        <div>
-          <ul>
-            <li>
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/question1"}>Question 1</Link>
-            </li>
-          </ul>
-        </div>
-        <div>{this.props.children}</div>
+      <div className={classes.root}>
+        <Drawer
+          variant="permanent"
+          anchor="left"
+          classes={{ paper: classes.drawerPaper }}
+        >
+          <div className={classes.linksContainer}>
+            <Link linkTo={"/"} name={"Home"}></Link>
+            <Link linkTo={"/question1"} name={"Question 1"}></Link>
+          </div>
+        </Drawer>
+        <div className={classes.content}>{this.props.children}</div>
       </div>
     );
   }
 }
 
-export default Layout;
+Layout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  classes: PropTypes.object.isRequired,
+};
+
+export default compose(withStyles(styles))(Layout);

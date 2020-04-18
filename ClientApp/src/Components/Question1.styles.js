@@ -1,12 +1,19 @@
 export const styles = {
-  textField: {
+  content: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "flex-start",
+    padding: 10,
+    width: "100%",
+    alignItems: "center",
+  },
+  textField: {
     paddingBottom: 5,
     marginTop: 20,
   },
-  icon: {
-    padding: 5,
+  button: {
+    backgroundColor: "#320B38",
+    color: "#fff",
+    width: "30%",
   },
 };
