@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Drawer, withTheme, withStyles } from "@material-ui/core";
+import { Drawer, withStyles } from "@material-ui/core";
 import { compose } from "recompose";
 import PropTypes from "prop-types";
 import Link from "./Shared/Link";
@@ -18,6 +18,7 @@ class Layout extends Component {
           <div className={classes.linksContainer}>
             <Link linkTo={"/"} name={"Home"}></Link>
             <Link linkTo={"/question1"} name={"Question 1"}></Link>
+            <Link linkTo={"/question2"} name={"Question 2"}></Link>
           </div>
         </Drawer>
         <div className={classes.content}>{this.props.children}</div>

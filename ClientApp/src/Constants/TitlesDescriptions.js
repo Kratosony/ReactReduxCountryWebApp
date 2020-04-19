@@ -11,3 +11,16 @@ export const titles = {
     "Using the same API ( https://restcountries.eu/ ) in the React front end list all the countries and a " +
     "field to filter the country by name.",
 };
+
+export function description(questionNumber) {
+  switch (questionNumber) {
+    case 1:
+      return titles.descriptionQ1;
+    case 2:
+      return titles.descriptionQ2;
+    case 3:
+      return titles.descriptionQ3;
+    default:
+      return undefined;
+  }
+}
