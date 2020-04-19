@@ -13,5 +13,5 @@ export const commonStrings = {
   country: "Country",
   results: "Results",
   showAll: "Show All Countries",
-  luck: "Try your Luck!",
+  spin: "Spin!",
 };
