@@ -10,6 +10,10 @@ export const titles = {
   descriptionQ3:
     "Using the same API ( https://restcountries.eu/ ) in the React front end list all the countries and a " +
     "field to filter the country by name.",
+  descriptionQ4:
+    "The user start with 20 coins, when the user run the function the user will lose 1 coin. " +
+    "Create a function that, when it’s called by the front end, gives back the result " +
+    "of a spin and shows the result.",
 };
 
 export function description(questionNumber) {
@@ -20,6 +24,8 @@ export function description(questionNumber) {
       return titles.descriptionQ2;
     case 3:
       return titles.descriptionQ3;
+    case 4:
+      return titles.descriptionQ4;
     default:
       return undefined;
   }

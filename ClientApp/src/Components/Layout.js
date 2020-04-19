@@ -20,6 +20,7 @@ class Layout extends Component {
             <Link linkTo={"/question1"} name={"Question 1"}></Link>
             <Link linkTo={"/question2"} name={"Question 2"}></Link>
             <Link linkTo={"/question3"} name={"Question 3"}></Link>
+            <Link linkTo={"/question4"} name={"Question 4"}></Link>
           </div>
         </Drawer>
         <div className={classes.content}>{this.props.children}</div>
