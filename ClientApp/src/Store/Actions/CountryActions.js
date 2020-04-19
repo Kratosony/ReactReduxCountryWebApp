@@ -4,10 +4,14 @@ export const CLOSE_COUNTRY_MODAL = "CLOSE_COUNTRY_MODAL";
 export const OPEN_ERROR_MODAL = "OPEN_ERROR_MODAL";
 export const CLOSE_ERROR_MODAL = "CLOSE_ERROR_MODAL";
 
-export function getCountryDetails(userCountryInput) {
+export function getCountryDetails(
+  userCountryInput,
+  { fullNameSearch = false }
+) {
   return {
     type: GET_COUNTRY_DETAILS,
     userCountryInput,
+    fullNameSearch,
   };
 }
 

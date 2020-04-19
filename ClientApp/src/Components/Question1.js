@@ -69,7 +69,11 @@ class Question1 extends Component {
               variant="contained"
               component="span"
               onClick={() => {
-                dispatch(getCountryDetails(this.state.searchFieldText));
+                dispatch(
+                  getCountryDetails(this.state.searchFieldText, {
+                    fullNameSearch: true,
+                  })
+                );
               }}
             >
               {commonStrings.submit}
