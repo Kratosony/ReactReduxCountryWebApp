@@ -6,6 +6,7 @@ import store from "./Store/Store";
 import Home from "./Components/Home";
 import Question1 from "./Components/Question1";
 import Question2 from "./Components/Question2";
+import Question3 from "./Components/Question3";
 import Layout from "./Components/Layout";
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/question1" component={Question1} />
               <Route path="/question2" component={Question2} />
+              <Route path="/question3" component={Question3} />
             </div>
           </Layout>
         </BrowserRouter>

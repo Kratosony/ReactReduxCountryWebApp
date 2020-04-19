@@ -1,5 +1,6 @@
 import {
   GET_COUNTRY_DETAILS_SUCCESS,
+  GET_ALL_COUNTRIES_SUCCESS,
   CLOSE_COUNTRY_MODAL,
   OPEN_ERROR_MODAL,
   CLOSE_ERROR_MODAL,
@@ -14,6 +15,7 @@ const initialState = {
 export default function countryReducer(state = initialState, action) {
   switch (action.type) {
     case GET_COUNTRY_DETAILS_SUCCESS:
+    case GET_ALL_COUNTRIES_SUCCESS:
       return Object.assign({}, state, {
         countryData: action.countryData,
         countryModal: action.countryModal,

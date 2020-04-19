@@ -12,4 +12,5 @@ export const commonStrings = {
   submit: "Submit",
   country: "Country",
   results: "Results",
+  showAll: "Show All Countries",
 };

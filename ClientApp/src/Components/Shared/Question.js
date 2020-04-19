@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
   getCountryDetails,
+  getAllCountries,
   closeCountryModal,
   closeErrorModal,
 } from "../../Store/Actions/CountryActions";
@@ -36,14 +37,22 @@ class Question extends Component {
     this.props.dispatch(closeErrorModal());
   };
 
+  onHandleClick = () => {
+    const { dispatch, questionNumber, fullNameSearch } = this.props;
+    const { searchFieldText } = this.state;
+    if (questionNumber !== 3) {
+      dispatch(
+        getCountryDetails(searchFieldText, {
+          fullNameSearch: fullNameSearch,
+        })
+      );
+    } else {
+      dispatch(getAllCountries());
+    }
+  };
+
   render() {
-    const {
-      classes,
-      dispatch,
-      country,
-      questionNumber,
-      fullNameSearch,
-    } = this.props;
+    const { classes, country, questionNumber } = this.props;
     return (
       <Fragment>
         <CountryModal
@@ -63,26 +72,24 @@ class Question extends Component {
           description={description(questionNumber)}
         >
           <div className={classes.content}>
-            <TextField
-              className={classes.textField}
-              placeholder={commonStrings.country}
-              margin="dense"
-              variant="outlined"
-              onChange={this.onChange}
-            />
+            {questionNumber !== 3 && (
+              <TextField
+                className={classes.textField}
+                placeholder={commonStrings.country}
+                margin="dense"
+                variant="outlined"
+                onChange={this.onChange}
+              />
+            )}
             <Button
               className={classes.button}
               variant="contained"
               component="span"
-              onClick={() => {
-                dispatch(
-                  getCountryDetails(this.state.searchFieldText, {
-                    fullNameSearch: fullNameSearch,
-                  })
-                );
-              }}
+              onClick={this.onHandleClick}
             >
-              {commonStrings.submit}
+              {questionNumber !== 3
+                ? commonStrings.submit
+                : commonStrings.showAll}
             </Button>
           </div>
         </Section>

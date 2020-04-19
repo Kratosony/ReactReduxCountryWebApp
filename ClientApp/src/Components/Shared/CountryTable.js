@@ -14,6 +14,9 @@ class CountryTable extends Component {
         columns={columns}
         data={countryData}
         icons={tableIcons}
+        options={{
+          filtering: true,
+        }}
       />
     );
   }

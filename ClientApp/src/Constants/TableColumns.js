@@ -6,11 +6,17 @@ export const columns = [
     render: (rowData) => (
       <img src={rowData.flag} alt={rowData.flag} style={{ width: 40 }} />
     ),
+    filtering: false,
   },
   { title: "Name", field: "name" },
-  { title: "Capital", field: "capital" },
-  { title: "Region", field: "region" },
-  { title: "Demonym", field: "demonym" },
-  { title: "Population", field: "population", type: "numeric" },
-  { title: "Area", field: "area", type: "numeric" },
+  { title: "Capital", field: "capital", filtering: false },
+  { title: "Region", field: "region", filtering: false },
+  { title: "Demonym", field: "demonym", filtering: false },
+  {
+    title: "Population",
+    field: "population",
+    type: "numeric",
+    filtering: false,
+  },
+  { title: "Area", field: "area", type: "numeric", filtering: false },
 ];
